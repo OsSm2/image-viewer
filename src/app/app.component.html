@@ -1,17 +1,12 @@
 <div id="container">
   <nav id="navbar">
-    <!-- <input type="url" id="url" 
-      name="url" placeholder="https://example.com" size="80"> -->
-
     <form [formGroup]="applyForm" (submit)="submitApplication()">
-      <input id="url" type="url" formControlName="url" placeholder="https://example.com" size="80">
+      <input id="urlForm" type="url" formControlName="urlForm" placeholder="https://example.com" size="80">
       <button type="submit" class="primary">Go</button>
     </form>
   </nav>
 
-  <section>
-
-  </section>
+  <img id="image" src="{{imageUrl}}" alt="image not found">
 </div>
 
 <router-outlet></router-outlet>
