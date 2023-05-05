@@ -15,8 +15,8 @@ export class AppComponent {
 
   @HostListener('window:keydown.arrowright', ['$event'])
   rightHandler(event: any) {
-    console.log("right arrow key pressed");
-    if (this.pointer + 1 < this.imageUrls.length ) {
+    console.log("right arrow key pressed. count: " + this.imageUrls.length.toString());
+    if (this.pointer + 1 < this.imageUrls.length) {
       this.pointer++;
       this.setImage();
     }
@@ -25,7 +25,7 @@ export class AppComponent {
   @HostListener('window:keydown.arrowleft', ['$event'])
   leftHandler(event: any) {
     console.log("left key pressed");
-    if (this.pointer > 0 ) {
+    if (this.pointer > 0) {
       this.pointer--;
       this.setImage();
     }
@@ -58,12 +58,14 @@ export class AppComponent {
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
         let dom = new DOMParser().parseFromString(xhr.responseText, 'text/html');
+
         if (dom != null) {
           let links = dom.getElementsByTagName("a");
           for (let i = 0; i < links.length; i++) {
             let anchor = links[i];
             let href = anchor.getAttribute("href");
             if (href?.startsWith("/photo")) {
+              console.log("href1: " + href);
               let level2Url = "https://" + domain + href;
               // console.log("level2: " + level2Url);
               let xhr2 = new XMLHttpRequest();
@@ -74,18 +76,23 @@ export class AppComponent {
                   let dom2 = new DOMParser().parseFromString(xhr2.responseText, 'text/html');
                   if (dom2 != null) {
                     let links2 = dom2.getElementsByTagName("a");
-
+                    let done = false;
                     for (let i2 = 0; i2 < links2.length; i2++) {
                       let anchor2 = links2[i2];
                       let href2 = anchor2.getAttribute("href");
-                      // console.log("href2: " + href2);
                       if (href2?.includes("full")) {
+                        console.log("href2: " + href2);
                         // console.log("anchor2: " + href2);
                         // first image
                         this.imageUrls.push(href2);
                         if (this.imageUrls.length === 1) {
                           this.setImage()
                         }
+                        done = true;
+                      }
+                      if (done) {
+
+                        break;
                       }
                     }
                   }
@@ -93,7 +100,6 @@ export class AppComponent {
               }
               xhr2.send();
             }
-
           }
         }
       }
