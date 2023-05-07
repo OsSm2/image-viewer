@@ -68,6 +68,12 @@ export class AppComponent {
             if (href?.startsWith("/photo")) {
               found1 = true;
               console.log("href1: " + href);
+              let exp = /photo\/(.*)\//;
+              let matches = exp.exec(href);
+              if (matches != null) {
+                let photoId = matches[1];
+                console.log(photoId);
+              }
               break;
               let level2Url = "https://" + domain + href;
               // console.log("level2: " + level2Url);
