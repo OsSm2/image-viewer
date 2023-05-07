@@ -1,5 +1,12 @@
 import { Component, HostListener } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable()
+export class ConfigService {
+  constructor(private http: HttpClient) { }
+}
 
 @Component({
   selector: 'app-root',
@@ -30,20 +37,29 @@ export class AppComponent {
       this.setImage();
     }
   }
-
-  constructor() {
+  
+  constructor(http: HttpClient) {
     console.log("In app.component constructor");
+    this.httpClient = http;
+    this.processFile();
   }
-
+  
   title = 'image-viewer';
   imageUrl: string = "";
   pointer = 0;
   log = "";
   private imageUrls = new Array<string>();
+  private httpClient: HttpClient;
 
   applyForm = new FormGroup({
     urlForm: new FormControl('')
   });
+
+  processFile() {
+    this.httpClient.get('assets/source.html', {responseType: 'text'})
+        .subscribe(data => console.log(data));
+  }
+  
 
   submitApplication() {
     let targetUrl = <string>this.applyForm.value.urlForm;
