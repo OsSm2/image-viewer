@@ -57,7 +57,7 @@ export class AppComponent {
 
   processFile() {
     let appendUrl = "http://localhost:8080/";
-    let domain = "https://www.imagefap.com";
+    let domain = "www.imagefap.com";
     this.httpClient.get('assets/source.txt', { responseType: 'text' })
       .subscribe((data) => {
         // console.log(data);
