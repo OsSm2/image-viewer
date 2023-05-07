@@ -46,7 +46,7 @@ export class AppComponent {
 
   title = 'image-viewer';
   imageUrl: string = "";
-  pointer = 0;
+  pointer = 20;
   log = "";
   private photoPages = new Array<HTMLElement>();
   // private imageUrls = new Array<string>();
