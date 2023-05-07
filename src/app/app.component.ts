@@ -61,7 +61,8 @@ export class AppComponent {
 
         if (dom != null) {
           let links = dom.getElementsByTagName("a");
-          for (let i = 0; i < links.length; i++) {
+          // for (let i = 0; i < links.length; i++) {
+            for (let i = 0; i < 1; i++) {
             let anchor = links[i];
             let href = anchor.getAttribute("href");
             if (href?.startsWith("/photo")) {
@@ -77,7 +78,8 @@ export class AppComponent {
                   if (dom2 != null) {
                     let links2 = dom2.getElementsByTagName("a");
                     let done = false;
-                    for (let i2 = 0; i2 < links2.length; i2++) {
+                    // for (let i2 = 0; i2 < links2.length; i2++) {
+                      for (let i2 = 0; i2 < 1; i2++) {
                       let anchor2 = links2[i2];
                       let href2 = anchor2.getAttribute("href");
                       if (href2?.includes("full")) {
