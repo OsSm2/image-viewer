@@ -97,7 +97,7 @@ export class AppComponent {
 
   setImage() {
     let appendUrl = "http://localhost:8080/";
-    let domain = "www.imagefap.com";
+    let domain = "www.zx.com";
     let href = this.photoPages[this.pointer].getAttribute("href");
     let photoId = this.photoPages[this.pointer].getAttribute("name");
 
