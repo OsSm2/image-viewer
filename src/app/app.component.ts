@@ -56,7 +56,7 @@ export class AppComponent {
   });
 
   processFile() {
-    this.httpClient.get('assets/source.html', {responseType: 'text'})
+    this.httpClient.get('assets/source.txt', {responseType: 'text'})
         .subscribe(data => console.log(data));
   }
   
