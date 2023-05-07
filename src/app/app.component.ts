@@ -61,12 +61,14 @@ export class AppComponent {
 
         if (dom != null) {
           let links = dom.getElementsByTagName("a");
-          // for (let i = 0; i < links.length; i++) {
-            for (let i = 0; i < 1; i++) {
+          let found1 = false;
+          for (let i = 0; i < links.length; i++) {
             let anchor = links[i];
             let href = anchor.getAttribute("href");
             if (href?.startsWith("/photo")) {
+              found1 = true;
               console.log("href1: " + href);
+              break;
               let level2Url = "https://" + domain + href;
               // console.log("level2: " + level2Url);
               let xhr2 = new XMLHttpRequest();
@@ -77,9 +79,8 @@ export class AppComponent {
                   let dom2 = new DOMParser().parseFromString(xhr2.responseText, 'text/html');
                   if (dom2 != null) {
                     let links2 = dom2.getElementsByTagName("a");
-                    let done = false;
-                    // for (let i2 = 0; i2 < links2.length; i2++) {
-                      for (let i2 = 0; i2 < 1; i2++) {
+                    let found2 = false;
+                    for (let i2 = 0; i2 < links2.length; i2++) {
                       let anchor2 = links2[i2];
                       let href2 = anchor2.getAttribute("href");
                       if (href2?.includes("full")) {
@@ -90,9 +91,9 @@ export class AppComponent {
                         if (this.imageUrls.length === 1) {
                           this.setImage()
                         }
-                        done = true;
+                        found2 = true;
                       }
-                      if (done) {
+                      if (found2 ) {
 
                         break;
                       }
@@ -101,6 +102,9 @@ export class AppComponent {
                 }
               }
               xhr2.send();
+            }
+            if (found1) {
+              break;
             }
           }
         }
