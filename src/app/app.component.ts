@@ -71,7 +71,7 @@ export class AppComponent {
             let anchor = links[i];
             let href = anchor.getAttribute("href");
             if (href?.startsWith("/photo")) {
-              found1 = true; // for testing
+              //found1 = true; // for testing
               console.log("href1: " + href);
               let exp = /photo\/(.*)\//;
               let matches = exp.exec(href);
