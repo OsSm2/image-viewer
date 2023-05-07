@@ -37,13 +37,13 @@ export class AppComponent {
       this.setImage();
     }
   }
-  
+
   constructor(http: HttpClient) {
     console.log("In app.component constructor");
     this.httpClient = http;
     this.processFile();
   }
-  
+
   title = 'image-viewer';
   imageUrl: string = "";
   pointer = 0;
@@ -56,10 +56,19 @@ export class AppComponent {
   });
 
   processFile() {
-    this.httpClient.get('assets/source.txt', {responseType: 'text'})
-        .subscribe(data => console.log(data));
+    this.httpClient.get('assets/source.txt', { responseType: 'text' })
+      .subscribe((data) => {
+        // console.log(data);
+        let dom = new DOMParser().parseFromString(data, 'text/html');
+
+        if (dom != null) {
+          let links = dom.getElementsByTagName("a");
+          console.log("anchors: " + links.length);
+        }
+      });
+
   }
-  
+
 
   submitApplication() {
     let targetUrl = <string>this.applyForm.value.urlForm;
