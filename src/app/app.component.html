@@ -1,11 +1,4 @@
 <div id="container">
-  <nav id="navbar">
-    <form [formGroup]="applyForm" (submit)="submitApplication()">
-      <input id="urlForm" type="url" formControlName="urlForm" placeholder="https://example.com" size="80">
-      <button type="submit" class="primary">Go</button>
-    </form>
-  </nav>
-
   <img id="image" src="{{imageUrl}}" alt="image not found">
   <p>{{log}}</p>
 </div>

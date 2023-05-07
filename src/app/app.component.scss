@@ -11,21 +11,7 @@
     align-items: flex-start;
     justify-content: flex-start;
 
-    & #navbar {
-        padding: 0;
-        margin: 0;
-        visibility: hidden;
-
-        & #urlForm {
-            // border: 1px solid black;
-            padding: 0;
-            margin: 0;
-            width: 90vw;
-
-
-        }
-
-    }
+    
     & #image {
         padding: 0;
         margin: 0;
