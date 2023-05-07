@@ -70,7 +70,7 @@ export class AppComponent {
           let found1 = false;
 
           for (let i = 0; i < links.length; i++) {
-            let anchor = links[i];
+            let anchor = <HTMLAnchorElement>links[i];
             let href = anchor.getAttribute("href");
             if (href?.startsWith("/photo")) {
               //found1 = true; // for testing
@@ -80,7 +80,10 @@ export class AppComponent {
               if (matches != null) {
                 let photoId = matches[1];
                 console.log("photoId: " + photoId.toString());
-                this.photoPages.push(anchor);
+                if (anchor != null && ! this.hasAlready(anchor)) {
+                  this.photoPages.push(anchor);
+
+                }
                 // let level2Url = "https://" + domain + href;
                 // console.log("level2: " + level2Url);
                 // let xhr2 = new XMLHttpRequest();
@@ -210,5 +213,16 @@ export class AppComponent {
 
   setImage() {
     this.imageUrl = this.imageUrls[this.pointer];
+  }
+
+  hasAlready(elNeedle: HTMLAnchorElement): boolean {
+    let name = elNeedle.getAttribute("name");
+    for (let elHaystack of this.photoPages) {
+      if (elHaystack.getAttribute("name") === name) {
+        return true;
+      }
+    }
+
+    return false;
   }
 }
