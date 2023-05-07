@@ -61,6 +61,7 @@ export class AppComponent {
 
         if (dom != null) {
           let links = dom.getElementsByTagName("a");
+          console.log("anchors: " + links.length);
           let found1 = false;
           for (let i = 0; i < links.length; i++) {
             let anchor = links[i];
