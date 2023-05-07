@@ -38,6 +38,7 @@ export class AppComponent {
   title = 'image-viewer';
   imageUrl: string = "";
   pointer = 0;
+  log = "";
   private imageUrls = new Array<string>();
 
   applyForm = new FormGroup({
@@ -58,6 +59,7 @@ export class AppComponent {
     // xhr.onreadystatechange = () => {
     xhr.onloadend = () => {
       // if (xhr.readyState === 4) {
+      this.log = xhr.responseText;
       let dom = new DOMParser().parseFromString(xhr.responseText, 'text/html');
 
       if (dom != null) {
