@@ -120,6 +120,7 @@ export class AppComponent {
               console.log("href2: " + href2);
               found2 = true;
               console.log("anchor2: " + href2);
+              this.imageUrl = href2;
               
             }
             if (found2) {
@@ -132,7 +133,6 @@ export class AppComponent {
     }
     xhr2.send();
 
-    //this.imageUrl = this.imageUrls[this.pointer];
   }
 
   hasAlready(elNeedle: HTMLAnchorElement): boolean {
