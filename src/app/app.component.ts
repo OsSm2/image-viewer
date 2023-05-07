@@ -74,12 +74,12 @@ export class AppComponent {
             let href = anchor.getAttribute("href");
             if (href?.startsWith("/photo")) {
               //found1 = true; // for testing
-              console.log("href1: " + href);
+              // console.log("href1: " + href);
               let exp = /photo\/(.*)\//;
               let matches = exp.exec(href);
               if (matches != null) {
                 let photoId = matches[1];
-                console.log("photoId: " + photoId.toString());
+                // console.log("photoId: " + photoId.toString());
                 if (anchor != null && ! this.hasAlready(anchor)) {
                   this.photoPages.push(anchor);
 
